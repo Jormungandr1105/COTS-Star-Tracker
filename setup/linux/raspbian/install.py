@@ -21,12 +21,12 @@ import time
 #MAIN CODE
 ################################
 #ensure user has set locale and time
-usr_in = input('Before running this script, you should set the system locale and time.  Have you done this? [Y/N]: ')
+usr_in = input('Before running this script, you should set the system locale and time.  Have you done this? [y/N]: ')
 
-usr_in=str(usr_in)
+usr_in=str(usr_in).lower()
 print(usr_in)
 
-if usr_in != 'y' and usr_in != 'Y' and usr_in != 'yes' and usr_in != 'YES' and usr_in != 'Yes' and usr_in != 'heck yeah':
+if usr_in != 'y' and usr_in != 'yes' and usr_in != 'heck yeah':
     print('\n\nset the system locale and time, restart the system, and then try again')
     sys.exit()
 
@@ -42,13 +42,15 @@ os.system('sudo apt-get --yes install libopenblas-dev')
 # install/update python stuff
 os.system('sudo apt-get --yes install python3-lxml')
 os.system('sudo apt-get --yes install libopencv-dev python3-opencv')
-os.system('sudo pip3 install pip --upgrade')
-os.system('sudo pip3 install psutil')
-os.system('sudo pip3 install imageio') #required for catalog creation
-os.system('sudo pip3 install astropy') #required for catalog creation
-os.system('sudo pip3 install pandas') #required for catalog creation
-os.system('sudo pip3 install statistics')
-os.system('sudo pip3 install astroquery') #required for astrometry verification
+# Sudo should not be used with pip, it breaks priviledges and makes it
+# Harder to fix if something goes awry
+os.system('pip3 install pip --upgrade')
+os.system('pip3 install psutil')
+os.system('pip3 install imageio') #required for catalog creation
+os.system('pip3 install astropy') #required for catalog creation
+os.system('pip3 install pandas') #required for catalog creation
+os.system('pip3 install statistics')
+os.system('pip3 install astroquery') #required for astrometry verification
 
 #install module
 home = os.getcwd()
@@ -56,13 +58,13 @@ os.chdir('..')
 os.chdir('..')
 os.chdir('..')
 os.chdir('py_src/star_tracker')
-os.system('sudo pip3 install .')
+os.system('pip3 install .')
 os.chdir(home)
 
 # stuff for performance analysis
-os.system('sudo pip3 --no-cache-dir install matplotlib') #otherwise you get a memory error
-os.system('sudo pip3 install --upgrade setuptools')
-os.system('sudo pip3 --no-cache-dir install scipy') #same
+os.system('pip3 --no-cache-dir install matplotlib') #otherwise you get a memory error
+os.system('pip3 install --upgrade setuptools')
+os.system('pip3 --no-cache-dir install scipy') #same
 
 
 print("\n\nInstallation complete.  Please restart the Pi!") 
