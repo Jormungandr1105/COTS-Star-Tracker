@@ -161,7 +161,8 @@ if usr_in == '':
     usr_in = 'generic_cam_params'
 usr_in_split = usr_in.split('.json')
 usr_in = usr_in_split[0]
-cam_cal_dir = os.path.dirname(os.path.realpath(__file__))
+checker_dir = os.path.dirname(os.path.realpath(__file__))
+cam_cal_dir = os.path.dirname(checker_dir)
 tools_dir = os.path.dirname(cam_cal_dir)
 py_src_dir = os.path.dirname(tools_dir)
 repo_dir = os.path.dirname(py_src_dir)
@@ -172,9 +173,3 @@ with open(full_cam_file_path, 'w') as fp:
 
 
 print("\n\ncamera parameter file saved to: " + str(full_cam_file_path) +"\n\n")
-
-
-
-
-
-
