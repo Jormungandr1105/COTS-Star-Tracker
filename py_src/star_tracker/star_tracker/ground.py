@@ -332,12 +332,12 @@ def create_darkframe(img_list, numImages):
 
     for count, filename in enumerate(img_list):
         img = cv.imread(filename, cv.IMREAD_GRAYSCALE)
-        if img == None:
+        if img is None:
             raise('Image {0} (count={1}) is None'.format(filename, count))
         images[:, :, count] = img
             # count += 1
 
-    if images == None:
+    if images is None:
         print('No images found for darkframe generator. Returning None')
         return None
     images_median = np.median(images, axis=2)

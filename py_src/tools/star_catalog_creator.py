@@ -54,7 +54,6 @@ import cv2
 import time
 import numpy as np
 
-sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"star_tracker"))
 import star_tracker.cam_matrix as cam_matrix
 import star_tracker.ground as ground
 
